@@ -25,3 +25,11 @@
 
 (defn index[]
   (base-html "TCS Internal Application" [:label {:style "color:white;font-weight:bold"} "Hello Top Content"] "Hello Left Content" "Hello Right Content"))
+
+(defn login[]
+  (hic-p/html5
+  (page-header "Login to Mind Strom")
+   [:body
+    [:div {:ng-class "top-div" :style "left:0;top:0;z-index:100 ;height : 40px;width : 100%;position : fixed;border :solid thin black;background-color : black;"}
+     [:label {:style "color:white;font-weight:bold"} "Hello Top Content"]]
+    [:div {:style "width : 150px; left :50%;top : 50%;border:solid thin black"}]]))
