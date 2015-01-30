@@ -1,3 +1,7 @@
+# How to Run this app
+
+lein run -m mind-strom.handler
+
 # mind-strom
 
 A Clojure library designed to ... well, that part is up to you.

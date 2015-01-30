@@ -9,6 +9,7 @@
 (cc/defroutes main-routes
   (cc/GET "/" [] (partials/index))
   (cc/GET "/login" [] (partials/login))
+  (cc/POST "/login-check" {params :params} (partials/index))
 
   (route/resources "/")
   (route/not-found "Not Found"))

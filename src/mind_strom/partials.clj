@@ -29,7 +29,12 @@
 (defn login[]
   (hic-p/html5
   (page-header "Login to Mind Strom")
-   [:body
+   [:body {:ng-app "login" :ng-controller "loginController"}
     [:div {:ng-class "top-div" :style "left:0;top:0;z-index:100 ;height : 40px;width : 100%;position : fixed;border :solid thin black;background-color : black;"}
      [:label {:style "color:white;font-weight:bold"} "Hello Top Content"]]
-    [:div {:style "width : 150px; left :50%;top : 50%;border:solid thin black"}]]))
+    [:div {:style "width: 400px; left :50%;top : 30%;position: absolute;margin-left: -200px;padding: 40px 20px;font-weight: bold;box-shadow: 0px 7px 21px;border-radius: 8px;"}
+     [:label "Employee ID"][:br][:br]
+     [:input {:type "text" :style "width: 97%;" :ng-model "employee_id"}][:br][:br]
+     [:label "Password"][:br][:br]
+     [:input {:type "text" :style "width: 97%;" :ng-model "password"}][:br][:br]
+     [:input {:type "button" :value "Login" :style "width: 97%;" :ng-click "loginCheck()"}]]]))
