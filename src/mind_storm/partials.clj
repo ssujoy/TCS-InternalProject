@@ -1,4 +1,4 @@
-(ns mind-strom.partials
+(ns mind-storm.partials
   (:require [hiccup.page :as hic-p])
   (:use [incanter.core]
         [incanter.excel]
@@ -28,9 +28,9 @@
 
 (defn login[]
   (hic-p/html5
-  (page-header "Login to Mind Strom")
+  (page-header "Login to Mind Storm")
    [:body {:ng-app "login" :ng-controller "loginController"}
-    [:div {:ng-class "top-div" :style "left:0;top:0;z-index:100 ;height : 40px;width : 100%;position : fixed;border :solid thin black;background-color : black;"}
+    [:div {:class "top-div" :style "left:0;top:0;z-index:100 ;height : 40px;width : 100%;position : fixed;border :solid thin black;background-color : black;"}
      [:label {:style "color:white;font-weight:bold"} "Hello Top Content"]]
     [:div {:style "width: 400px; left :50%;top : 30%;position: absolute;margin-left: -200px;padding: 40px 20px;font-weight: bold;box-shadow: 0px 7px 21px;border-radius: 8px;"}
      [:label "Employee ID"][:br][:br]
@@ -38,3 +38,22 @@
      [:label "Password"][:br][:br]
      [:input {:type "text" :style "width: 97%;" :ng-model "password"}][:br][:br]
      [:input {:type "button" :value "Login" :style "width: 97%;" :ng-click "loginCheck()"}]]]))
+
+
+
+(defn take-quiz-page[]
+  (base-html "TCS Internal Application" [:label {:style "color:white;font-weight:bold"} "Hello Top Content"] "Hello Left Content"
+     [:span
+      [:div {:style ""} "Select the correct option"
+       [:label {:style "float:right"} "Time Remaining : 23:12 "]]
+      [:div {:style "" :ng-app "takeQuiz" :ng-controller "takeQuizController"}
+        [:div {:style "background-color: white;box-shadow: 1px 1px 15px;border-radius: 4px;margin-top:45px;min-height:100px;padding: 15px 20px;" :ng-repeat "each_qsn in question_list"}
+         [:label {:style ""} "{{each_qsn.question}}"]
+
+         [:table {:style "width: 100%;margin-top: 20px;"}
+          [:tr
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_a}}"]
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_b}}"]]
+          [:tr
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_c}}"]
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_d}}"]]]]]]))

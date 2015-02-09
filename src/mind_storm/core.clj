@@ -1,4 +1,4 @@
-(ns mind-strom.core)
+(ns mind-storm.core)
 
 (defn foo
   "I don't do a whole lot."

@@ -1,6 +1,6 @@
-(ns mind-strom.core-test
+(ns mind-storm.core-test
   (:require [clojure.test :refer :all]
-            [mind-strom.core :refer :all]))
+            [mind-storm.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

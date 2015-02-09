@@ -1,4 +1,4 @@
-(defproject mind-strom "0.1.0-SNAPSHOT"
+(defproject mind-storm "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -12,11 +12,13 @@
                  [ring/ring-jetty-adapter "1.3.2"]
                  [incanter/incanter-core "1.4.1"]
                  [incanter/incanter-excel "1.4.1"]
-                 [dk.ative/docjure "1.8.0"]]
+                 [dk.ative/docjure "1.8.0"]
+                 [cheshire "5.2.0"]
+                 [lib-noir "0.9.5"]]
   :plugins [[lein-ring "0.8.13"]]
-  :ring {:handler mind-strom.handler/app}
+  :ring {:handler mind-storm.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring-mock "0.1.5"]]}}
-  :main mind-strom.handler
-  :aot [mind-strom.handler])
+  :main mind-storm.handler
+  :aot [mind-storm.handler])
