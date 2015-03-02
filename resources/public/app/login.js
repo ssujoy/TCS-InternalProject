@@ -133,8 +133,9 @@ takeQuiz.controller("takeQuizController", function($interval, $scope, $http, $wi
 
   $scope.submitAnswer = function (){
     alert("SEE CONSOLE");
-    $http.get('/submit-quiz', {answers: $scope.options}).success(function(data, status, headers, config) {
+    $http.post('/submit-quiz', {answers: $scope.options}).success(function(data, status, headers, config) {
                   alert(data.data);
+                  console.log(data.data);
                 }).error(function(data, status) { // called asynchronously if an error occurs
                   alert("ERROR");
                 });

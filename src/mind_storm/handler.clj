@@ -14,7 +14,7 @@
   (cc/GET "/take-quiz" [] (partials/take-quiz-page))
   (cc/POST "/login-check" {params :params} (login/check-login (:user params) (:password params)))
   (cc/GET "/get-quiz-question" [] (take-quiz/get-quiz-question))
-  (cc/GET "/submit-quiz" {params :params} (take-quiz/submit-quiz (:answers params)))
+  (cc/POST "/submit-quiz" {params :params} (take-quiz/submit-quiz (:answers params)))
 
   (route/resources "/")
   (route/not-found "Not Found"))

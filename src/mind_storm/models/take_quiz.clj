@@ -1,3 +1,4 @@
+
 (ns mind_storm.models.take_quiz
 (:use [incanter.core]
         [incanter.excel]
