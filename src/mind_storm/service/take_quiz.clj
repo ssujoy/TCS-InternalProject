@@ -8,3 +8,13 @@
   []
   (let[data (take-quiz/get-quiz-question*)]
     (http-util/json-response 200 {:success true  :data data})))
+
+(defn calculate-marks[]
+  )
+
+(defn submit-quiz
+  [answers]
+  (println answers)
+  (let[data (take-quiz/submit-quiz)]
+    (http-util/json-response 200 {:success true  :data data})))
+

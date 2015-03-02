@@ -116,10 +116,12 @@ var takeQuiz = angular.module('takeQuiz', [], function($httpProvider) {
 
 //================================== TAKE QUIZ CONTROLLER ==================================
 
-takeQuiz.controller("takeQuizController", function($scope, $http, $window) {
+takeQuiz.controller("takeQuizController", function($interval, $scope, $http, $window) {
   alert("QUIZ CONTROLLER");
   $scope.question_list = [];
-  $scope.options = [];
+  $scope.options = {};
+  $scope.timer = "00:00:00";
+
   $scope.getAllQuestions = function (){
     $http.get('/get-quiz-question').success(function(data, status, headers, config) {
                   $scope.question_list = data.data;
@@ -128,4 +130,36 @@ takeQuiz.controller("takeQuizController", function($scope, $http, $window) {
                 });
     }
   $scope.getAllQuestions();
+
+  $scope.submitAnswer = function (){
+    alert("SEE CONSOLE");
+    $http.get('/submit-quiz', {answers: $scope.options}).success(function(data, status, headers, config) {
+                  alert(data.data);
+                }).error(function(data, status) { // called asynchronously if an error occurs
+                  alert("ERROR");
+                });
+    console.log($scope.options);
+  }
+
+  var hh,mm,ss;
+  hh=60;
+  mm=60;
+  ss=60;
+
+  $interval(function(){
+    if(ss==0 && mm!=0){
+      mm--;
+      ss=60;
+    }
+    if(mm==0 && hh!=0){
+      hh--;
+      mm = 60;
+    }
+    ss--;
+    if(hh==0 && mm == 0 && ss == 0){
+      alert("finished");
+    }
+    $scope.timer = hh+":"+mm+":"+ss;
+  },1000);
+
 });

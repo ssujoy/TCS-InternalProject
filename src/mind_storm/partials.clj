@@ -43,17 +43,18 @@
 
 (defn take-quiz-page[]
   (base-html "TCS Internal Application" [:label {:style "color:white;font-weight:bold"} "Hello Top Content"] "Hello Left Content"
-     [:span
+     [:span {:ng-app "takeQuiz" :ng-controller "takeQuizController"}
       [:div {:style ""} "Select the correct option"
-       [:label {:style "float:right"} "Time Remaining : 23:12 "]]
-      [:div {:style "" :ng-app "takeQuiz" :ng-controller "takeQuizController"}
+       [:label {:style "float:right"} "Time Remaining : {{timer}} "]]
+      [:div {:style ""}
         [:div {:style "background-color: white;box-shadow: 1px 1px 15px;border-radius: 4px;margin-top:45px;min-height:100px;padding: 15px 20px;" :ng-repeat "each_qsn in question_list"}
          [:label {:style ""} "{{each_qsn.question}}"]
 
          [:table {:style "width: 100%;margin-top: 20px;"}
           [:tr
-           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_a}}"]
-           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_b}}"]]
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "{{each_qsn.op_a}}"}] "{{each_qsn.op_a}}"]
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "{{each_qsn.op_b}}"}] "{{each_qsn.op_b}}"]]
           [:tr
-           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_c}}"]
-           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "x"}] "{{each_qsn.op_d}}"]]]]]]))
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "{{each_qsn.op_c}}"}] "{{each_qsn.op_c}}"]
+           [:td [:input {:type "radio" :ng-model "options[each_qsn.sl]" :value "{{each_qsn.op_d}}"}] "{{each_qsn.op_d}}"]]]]
+       [:input {:type "button" :ng-click "submitAnswer()" :value "Submit Quiz" :style "float: right;margin: 35px 0px;width: 180px;height: 50px;border: thin solid #008000;background-color: #C3ECB9;font-size: 19px;font-family: Arial;color: #165C32;cursor:pointer"}]]]))
